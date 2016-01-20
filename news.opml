@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+  <head>
+    <title>News</title>
+  </head>
+  <body>
+    <outline text="News" title="News">
+      <outline type="rss" text="Motley Fool" title="Motley Fool" xmlUrl="http://www.fool.ca/feed" htmlUrl="http://www.fool.ca/"/>
+      <outline type="rss" text="Greater Fool" title="Greater Fool" xmlUrl="http://www.greaterfool.ca/feed/" htmlUrl="http://www.greaterfool.ca/"/>
+      <outline type="rss" text="Don R. Campbell" title="Don R. Campbell" xmlUrl="http://www.donrcampbell.com/rss" htmlUrl="http://www.donrcampbell.com/"/>
+      <outline type="rss" text="REIN" title="REIN" xmlUrl="http://blog.reincanada.com/rss.xml" htmlUrl="http://blog.reincanada.com/"/>
+      <outline type="rss" text="Edmonton Real-Estate Blog" title="Edmonton Real-Estate Blog" xmlUrl="http://edmontonrealestateblog.com/feed/" htmlUrl="http://www.edmontonrealestateblog.com/"/>
+      <outline type="rss" text="CHBA Calgary" title="CHBA Calgary" xmlUrl="http://feeds.feedburner.com/chbacalgary/bLIb" htmlUrl="http://www.chbacalgary.com/"/>
+      <outline type="rss" text="CHBA Lethbridge" title="CHBA Lethbridge" xmlUrl="http://www.chbalethbridge.com/rss" htmlUrl="http://www.chbalethbridge.com/"/>
+      <outline type="rss" text="Housing Analysis" title="Housing Analysis" xmlUrl="http://housing-analysis.blogspot.com/feeds/posts/default" htmlUrl="http://housing-analysis.blogspot.ca/"/>
+      <outline type="rss" text="RateHub" title="RateHub" xmlUrl="https://www.ratehub.ca/blog/home/feed/" htmlUrl="http://www.ratehub.ca/blog/"/>
+      <outline type="rss" text="CMHC Market Info" title="CMHC Market Info" xmlUrl="http://www.cmhc.ca/en/corp/nero/nere/nere_018.cfm?outputXML=1" htmlUrl="http://www.cmhc.ca/en/corp/nero/nere/nere_018.cfm?outputXML=1"/>
+      <outline type="rss" text="CMHC Alberta News" title="CMHC Alberta News" xmlUrl="http://www.cmhc.ca/en/corp/nero/nere/nere_023.cfm?outputXML=1" htmlUrl="http://www.cmhc.ca/en/corp/nero/nere/nere_023.cfm?outputXML=1"/>
+      <outline type="rss" text="Canadian Finance Blog" title="Canadian Finance Blog" xmlUrl="http://feed.canadianfinanceblog.com/CanadianFinance" htmlUrl="http://www.canadianfinanceblog.com/"/>
+      <outline type="rss" text="MoneySense" title="MoneySense" xmlUrl="http://www.moneysense.ca/feed/" htmlUrl="http://www.moneysense.ca/"/>
+      <outline type="rss" text="Boomer &amp; Echo" title="Boomer &amp; Echo" xmlUrl="http://boomerandecho.com/feed/" htmlUrl="http://www.boomerandecho.com/"/>
+      <outline type="rss" text="Canadian Couch Potato" title="Canadian Couch Potato" xmlUrl="http://canadiancouchpotato.com/feed/" htmlUrl="http://www.canadiancouchpotato.com/"/>
+      <outline type="rss" text="The Financial Blogger" title="The Financial Blogger" xmlUrl="http://www.thefinancialblogger.com/feed/" htmlUrl="http://www.thefinancialblogger.com/"/>
+      <outline type="rss" text="Canadian Capitalist" title="Canadian Capitalist" xmlUrl="http://feeds2.feedburner.com/ccapitalist" htmlUrl="http://www.canadiancapitalist.com/"/>
+      <outline type="rss" text="Financial Uproar" title="Financial Uproar" xmlUrl="http://financialuproar.com/feed/" htmlUrl="http://www.financialuproar.com/"/>
+      <outline type="rss" text="The Canada Bubble" title="The Canada Bubble" xmlUrl="http://www.thebubblebubble.com/feed/" htmlUrl="http://www.thebubblebubble.com/canada-bubble/"/>
+      <outline type="rss" text="Jesse Columbo" title="Jesse Columbo" xmlUrl="http://www.forbes.com/sites/jessecolombo/feed/" htmlUrl="http://www.forbes.com/sites/jessecolombo/feed/"/>
+    </outline>
+  </body>
+</opml>
