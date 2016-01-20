@@ -1,5 +1,13 @@
 # Crabl's Big Bag of Blogs
 
+* **Information Sources**
+  - [ ] from news outlets to obscure blogs
+  - [ ] tagged by ideological orientation, subject matter, and geographical origin
+  - [ ] more obscure sources that publish less frequently should be weighted heavier than "traditional" sources that publish often in order to offset publication bias
+* **Application:** Select what to read next using criteria that emphasize diversity
+* **Goal:** Constantly encounter different perspectives to become better at predicting events
+
+
 ## Real Estate
 * Motley Fool http://www.fool.ca/
 * Greater Fool http://www.greaterfool.ca/
