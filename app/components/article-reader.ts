@@ -5,6 +5,7 @@ import 'xml2js';
 @Component({
   selector: 'article-reader',
   template: `
+    <button>&lt; Previous</button> <button>Next &gt;</button>
     <div>This is an article</div>
   `
 })
