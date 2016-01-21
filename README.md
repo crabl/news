@@ -7,7 +7,6 @@
 * **Application:** Select what to read next using criteria that emphasize diversity
 * **Goal:** Constantly encounter different perspectives to become better at predicting events
 
-
 ## Real Estate
 * Motley Fool http://www.fool.ca/
 * Greater Fool http://www.greaterfool.ca/
