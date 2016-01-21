@@ -2,7 +2,7 @@
   "name": "news",
   "version": "1.0.0",
   "description": "Not yo mama's RSS reader",
-  "main": "app.js",
+  "main": "main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/crabl/news.git"
@@ -16,7 +16,7 @@
   "scripts": {
      "build": "webpack --progress --profile --colors --display-error-details --display-cached",
      "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
-     "electron": "electron app"
+     "electron": "electron ."
    },
    "devDependencies": {
      "electron-prebuilt": "^0.35.4",
