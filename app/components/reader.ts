@@ -4,7 +4,6 @@ import {NgFor} from 'angular2/common';
 import Categories from './categories';
 import ArticleReader from './article-reader';
 
-
 @Component({
   selector: 'reader',
   directives: [Categories, ArticleReader],
