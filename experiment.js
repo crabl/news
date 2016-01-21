@@ -10,15 +10,13 @@ let OpmlParser = require('opmlparser');
 let Q = require('Q');
 
 function parseOpml(fileName) {
-  let parser = new OpmlParser();
   let deferred = Q.defer();
+
+  let parser = new OpmlParser();
   let feeds = [];
 
   let readFile = fs.createReadStream(fileName);
-  readFile.on('open', () => {
-    console.log('opened file');
-    readFile.pipe(parser)
-  });
+  readFile.on('open', () => readFile.pipe(parser));
 
   parser.on('readable', function () {
     var outline;
@@ -32,9 +30,7 @@ function parseOpml(fileName) {
     }
   });
 
-  parser.on('end', () => {
-    deferred.resolve(feeds)
-  });
+  parser.on('end', () => deferred.resolve(feeds));
 
   return deferred.promise;
 }
