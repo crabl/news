@@ -5,68 +5,78 @@ let xml2js = require('xml2js');
 let feedReader = require('feed-read');
 let moment = require('moment');
 let shuffle = require('knuth-shuffle').knuthShuffle;
+let OpmlParser = require('opmlparser');
 
 let Q = require('Q');
 
-let feeds = [{
-  url: 'http://www.fool.ca/feed',
-  obscurity: 0,
-  specificity: 0
-}, {
-  url: 'http://www.greaterfool.ca/feed/',
-  obscurity: 0,
-  specificity: 0
-}, {
-  url: 'http://www.donrcampbell.com/rss',
-  obscurity: 0,
-  specificity: 0
-}, {
-  url: 'http://blog.reincanada.com/rss.xml',
-  obscurity: 0,
-  specificity: 0
-}, {
-  url: 'http://edmontonrealestateblog.com/feed/',
-  obscurity: 0,
-  specificity: 0
-}, {
-  url: 'https://www.ratehub.ca/blog/home/feed/',
-  obscurity: 0,
-  specificity: 0
-}];
-
-let allArticles = feeds.map(feed => {
+function parseOpml(fileName) {
+  let parser = new OpmlParser();
   let deferred = Q.defer();
+  let feeds = [];
 
-  feedReader(feed.url, (err, articles) => {
-    if (err) { deferred.reject(err); }
+  let readFile = fs.createReadStream(fileName);
+  readFile.on('open', () => {
+    console.log('opened file');
+    readFile.pipe(parser)
+  });
 
-    let dates = articles.map(article => moment(article.published));
+  parser.on('readable', function () {
+    var outline;
 
-    let averagePublicationFrequency = dates
-      .map((current, index) => {
-        let last = index === 0 ? moment() : dates[index - 1];
-        return last.diff(current, 'days');
-      })
-      .reduce((total, n) => total + n, 0) / (dates.length);
+    while (outline = this.read()) {
+      if (outline['#type'] === 'feed') {
+        feeds.push({
+          url: outline.xmlurl
+        });
+      }
+    }
+  });
 
-    // TODO: will have to add a nonce in here somewhere to keep the order sufficiently random
-    let todayArticles = articles
-      .filter(article => moment().diff(moment(article.published), 'days') <= 20)
-      .map(article => ({
-        title: article.title,
-        frequency: averagePublicationFrequency
-        // content: article.content
-      }));
-
-    deferred.resolve(todayArticles);
+  parser.on('end', () => {
+    deferred.resolve(feeds)
   });
 
   return deferred.promise;
-});
+}
 
-Q.all(allArticles)
- .then(collection => collection.reduce((flat, arr) => flat.concat(arr), []))
- .then(articles => shuffle([...articles]))
+function calculatePublicationFrequency(articles) {
+  const dates = articles.map(article => moment(article.published));
+
+  return dates
+    .map((current, index) => {
+      let last = index === 0 ? moment() : dates[index - 1];
+      return last.diff(current, 'days');
+    })
+    .reduce((total, n) => total + n, 0) / (dates.length);
+}
+
+function fetchArticles(feeds) {
+  return Q.all(feeds.map(feed => {
+    let deferred = Q.defer();
+
+    feedReader(feed.url, (err, articles) => {
+      if (err) { deferred.reject(err); }
+
+      // TODO: will have to add a nonce in here somewhere to keep the order sufficiently random
+      const todayArticles = articles
+        .filter(article => moment().diff(moment(article.published), 'days') <= 1)
+        .map(article => ({
+          title: article.title,
+          frequency: calculatePublicationFrequency(articles)
+          // content: article.content
+        }));
+
+      deferred.resolve(todayArticles);
+    });
+
+    return deferred.promise;
+  }));
+}
+
+parseOpml('news.opml')
+ .then(feeds => fetchArticles(feeds)) // for each feed, fetch today's articles
+ .then(nested => nested.reduce((flattened, articles) => [...flattened, ...articles], [])) // flatten into a single array
+ .then(articles => shuffle([...articles])) // shuffle articles randomly using Fisher-Yates algorithm
  .then(articles => {
    console.log(JSON.stringify(articles, null, 2));
  });
